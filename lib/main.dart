@@ -39,7 +39,7 @@ class _IdGeneratorState extends State<IdGenerator> {
       floatingActionButton: FloatingActionButton(onPressed: (){
         setState(() {
           Random random = new Random();
-          randomNumber = random.nextInt(999999) + 100000; // from 10 upto 99 included
+          randomNumber = random.nextInt(999999) + 100000; // from 100000 upto 999999 included
         });
       }, child: Icon(Icons.shuffle),),
     );
