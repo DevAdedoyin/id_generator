@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(home: IdGenerator(),));
@@ -8,6 +10,7 @@ class IdGenerator extends StatefulWidget {
 }
 
 class _IdGeneratorState extends State<IdGenerator> {
+  int randomNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +28,7 @@ class _IdGeneratorState extends State<IdGenerator> {
           Text("Adedoyin", style: TextStyle(color: Colors.yellowAccent, fontWeight: FontWeight.bold, letterSpacing: 1, fontSize: 30),),
           SizedBox(height: 10.0,),
           Text("ID", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, letterSpacing: 1, fontSize: 20),),
-          Text("355545454", style: TextStyle(color: Colors.yellowAccent, fontWeight: FontWeight.bold, letterSpacing: 1, fontSize: 30),),
+          Text("$randomNumber", style: TextStyle(color: Colors.yellowAccent, fontWeight: FontWeight.bold, letterSpacing: 1, fontSize: 30),),
           SizedBox(height: 15.0,),
           Row(children: <Widget>[
             Icon(Icons.mail, color: Colors.white,),
@@ -33,7 +36,12 @@ class _IdGeneratorState extends State<IdGenerator> {
           ],)
         ],),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.shuffle),),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        setState(() {
+          Random random = new Random();
+          randomNumber = random.nextInt(999999) + 100000; // from 10 upto 99 included
+        });
+      }, child: Icon(Icons.shuffle),),
     );
   }
 }
